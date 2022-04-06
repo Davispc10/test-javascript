@@ -45,17 +45,15 @@ idade = idade + pessoa.idade;
 console.log("A soma das idades é: "+ idade);
 //Exercicio 2.3 e 2.4
 //2.3
-let idadeMaior = 0;
+let maioresIdade = 0;
 console.log("\n Exercicio 2.3 ");
 pessoas.forEach(testeIdade);
 
 function testeIdade(pessoa){
-    if(pessoa.idade < 25){
-        idadeMaior = idadeMaior + 1;
+    if((pessoa.idade < 25) && (maioresIdade == 0)){
+        console.log(pessoa);
+        maioresIdade += 1;
     }
-}
-if (idadeMaior>1){
-    console.log(pessoas);
 }
 
 //2.4
@@ -136,6 +134,7 @@ function calculoDigitos(cpf){
 
 exports.validar = function (cpf) {
 	//Verifica se o CPF é válido
+    cpf[11,14].includes(cpf.lenght);
     if ((cpf !== null) && (cpf !== undefined) && (cpf.length >= 11 || cpf.length <= 14)){        
               //Retira os . e - do cpf
                 cpf = retirarPontuacoes(cpf);
