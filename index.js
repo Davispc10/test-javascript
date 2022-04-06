@@ -1,23 +1,22 @@
 //Exercicio 1
-console.log("Exercicio 1 \n");
+console.log(" \nExercicio 1");
 
 const Q = [19, 15, 18, 17, 16, 20, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 30, 2, 1];
 let maior = Q[0];
-let pos = 0;
+let posicao = 0;
 
 Q.forEach(maiorValor);
 
 function maiorValor(valor, indice){
     if(maior<Q[indice]){
         maior = Q[indice];
-        pos = indice;
+        posicao = indice;
     }
 }
 
-console.log("O maior valor é : "+Q[pos]+" de índice: "+ pos);
-console.log("");
+console.log("O maior valor é : "+Q[posicao]+" de índice: "+ posicao);
 //exercicio 2.1
-console.log("Exercicio 2.1 \n");
+console.log(" \n Exercicio 2.1");
 
 const pessoas = [
     {id: 1, nome: 'juca', sobrenome: 'da silva', idade: 42},
@@ -32,9 +31,8 @@ function saudarPessoa(pessoa){
     console.log("Olá, "+ pessoa.nome + " "+ pessoa.sobrenome);
 
 }
-console.log("");
 //Exercicio 2.2
-console.log("Exercicio 2.2 \n");
+console.log("\nExercicio 2.2 ");
 
 let idade = 0;
 
@@ -45,11 +43,10 @@ idade = idade + pessoa.idade;
 }
 
 console.log("A soma das idades é: "+ idade);
-console.log("");
 //Exercicio 2.3 e 2.4
 //2.3
 let idadeMaior = 0;
-console.log("Exercicio 2.3 \n");
+console.log("\n Exercicio 2.3 ");
 pessoas.forEach(testeIdade);
 
 function testeIdade(pessoa){
@@ -62,7 +59,7 @@ if (idadeMaior>1){
 }
 
 //2.4
-console.log("Exercicio 2.4 \n");
+console.log("\n Exercicio 2.4 ");
 
 var idadeX = 30;
 pessoas.forEach(menorDeIdadeX);
@@ -73,7 +70,7 @@ function menorDeIdadeX(pessoa){
 }
 
 //Exercicio 2.5
-console.log("Exercicio 2.5 \n");
+console.log(" \nExercicio 2.5");
 let tamanhoTotal = 0;
 pessoas.forEach(tamanho);
 
@@ -106,7 +103,7 @@ function imprimirTodos(pessoa){
     console.log(pessoa);
 }
 //Exercicio 3
-console.log("Exercicio 3 (somente no arquivo) \n ");
+console.log("\nExercicio 3 (somente no arquivo)  ");
 //código refatorado abaixo 
 
 function retirarPontuacoes(cpf){
@@ -114,42 +111,41 @@ function retirarPontuacoes(cpf){
     return cpf;
 }
 function calculoDigitos(cpf){
-    let d1, d2, dg1, dg2, rest, digito, nDigResult;  
-    d1 = d2 = dg1 = dg2 = rest = 0;  
+    let calculoDigito1, calculoDigito2, DigitoVerificador1, DigitoVerificador2, rest, digito, nDigResult;  
+    calculoDigito1 = calculoDigito2 = DigitoVerificador1 = DigitoVerificador2 = rest = 0;  
 
     for (let nCount = 1; nCount < cpf.length -1; nCount++) {  
         digito = parseInt(cpf.strcpfing(nCount -1, nCount));  							
-        d1 = d1 + ( 11 - nCount ) * digito;
-        d2 = d2 + ( 12 - nCount ) * digito;  
+        calculoDigito1 = calculoDigito1 + ( 11 - nCount ) * digito;
+        calculoDigito2 = calculoDigito2 + ( 12 - nCount ) * digito;  
 
     };
-    rest = (d1 % 11);  
-    dg1 = (rest < 2) ? dg1 = 0 : 11 - rest;  
-    d2 += 2 * dg1;  
-    rest = (d2 % 11);  
+    rest = (calculoDigito1 % 11);  
+    DigitoVerificador1 = (rest < 2) ? DigitoVerificador1 = 0 : 11 - rest;  
+    calculoDigito2 += 2 * DigitoVerificador1;  
+    rest = (calculoDigito2 % 11);  
     if (rest < 2){  
-        dg2 = 0;  
+        DigitoVerificador2 = 0;  
     }
     else{  
-        dg2 = 11 - rest;  
+        DigitoVerificador2 = 11 - rest;  
     }
-    nDigResult = "" + dg1 + "" + dg2;  
+    nDigResult = "" + DigitoVerificador1 + "" + DigitoVerificador2;  
     return nDigResult;
 }
 
 exports.validar = function (cpf) {
-	if (cpf !== null) {
-        if (cpf !== undefined) {
-            if (cpf.length >= 11 || cpf.length <= 14){
+	//Verifica se o CPF é válido
+    if ((cpf !== null) && (cpf !== undefined) && (cpf.length >= 11 || cpf.length <= 14)){        
               //Retira os . e - do cpf
                 cpf = retirarPontuacoes(cpf);
                 if (!cpf.split("").every(c => c === cpf[0])) {
                     try{  
                         //realiza os calculos para descobrir o primeiro digito verificador, e usando ele, é usado para descobrir o segundo digito.
                        let digitoVerificador = calculoDigitos(cpf);
-                       let nDigVerific = cpf.substring(cpf.length-2, cpf.length);  
+                       let numeroDigitadoVerificador = cpf.substring(cpf.length-2, cpf.length);  
                         //verifica se o digito verificador usado está correto e retorna verdadeiro ou falso.
-                       return digitoVerificador == nDigVerific;
+                       return digitoVerificador == numeroDigitadoVerificador;
                     }catch (e){  
                         console.error("Erro !"+e);  
                         return false;  
@@ -157,14 +153,8 @@ exports.validar = function (cpf) {
                 } else 
                 console.log("Erro na divisão do cpf em substrings");
                 return false;
-            }else 
-            console.log("CPF menor que 11 caracteres ou maior que 14 caracteres");
-            return false;
-        } else 
-        console.log("CPF indefinido");
+            }
+        console.log("Erro de digitação do CPF");
         return false;
-	} else 
-    console.log("CPF nulo");
-    return false;
 }
 
