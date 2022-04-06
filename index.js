@@ -134,8 +134,8 @@ function calculoDigitos(cpf){
 
 exports.validar = function (cpf) {
 	//Verifica se o CPF é válido
-    cpf[11,14].includes(cpf.lenght);
-    if ((cpf !== null) && (cpf !== undefined) && (cpf.length >= 11 || cpf.length <= 14)){        
+    let tamanhoCpf = [11, 12, 13, 14];
+    if ((cpf !== null) && (cpf !== undefined) && (tamanhoCpf.includes(cpf.lenght))){        
               //Retira os . e - do cpf
                 cpf = retirarPontuacoes(cpf);
                 if (!cpf.split("").every(c => c === cpf[0])) {
