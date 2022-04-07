@@ -28,7 +28,7 @@ const pessoas = [
 pessoas.forEach(saudarPessoa);
 
 function saudarPessoa(pessoa){
-    console.log("Olá, "+ pessoa.nome + " "+ pessoa.sobrenome);
+    console.log("Olá, "+ pessoa.nome + " "+ pessoa.sobrenome+"!");
 
 }
 //Exercicio 2.2
