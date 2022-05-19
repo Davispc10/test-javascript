@@ -12,6 +12,8 @@ Vamos ao teste!
 
 1 - Crie um vetor Q de 20 posições (somente números). Escrever a seguir o valor do maior elemento de Q e a respectiva posição que ele ocupa no vetor;
 
+
+
 2 - Para os seguintes exercícios considere o array de objetos:
 ```
 [
